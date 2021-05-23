@@ -1,0 +1,25 @@
+version: '3'
+
+services: 
+  mysql:
+    labels: 
+      - database_testes
+    image: mysql:5.7
+    container_name: mysql-container
+    environment: 
+      - MYSQL_DATABASE=teste 
+      - MYSQL_ROOT_PASSWORD=root
+    networks: 
+      - EngDados
+    ports: 
+      - "3306:3306"
+    expose: 
+      - "3306"
+    volumes: 
+      - ./dbdata:/var/lib/mysql
+      
+networks: 
+  EngDados:
+
+volumes: 
+  dbdata:
